@@ -10,8 +10,9 @@
 *.user
 .env
 *.Development.json
-.ideia/
+.idea/
 .git/
+Migrations/
 
 # Build results
 [Dd]ebug/
