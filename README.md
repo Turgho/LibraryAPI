@@ -67,7 +67,7 @@ https://localhost:5291/swagger
 
 ### Como rodar testes
 ```bash
-dotnet test BibliotecaAPI.Tests/BibliotecaAPI.Tests
+dotnet test LibraryAPI.Tests
 ```
 
 ---
