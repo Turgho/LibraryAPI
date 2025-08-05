@@ -18,11 +18,11 @@ public class BookServices : IBookServices
         _mapper = mapper;
     }
 
-    public async Task<List<ReadBookDto>?> ListBooksAsync()
+    public async Task<List<ReadBookDto>> ListBooksAsync()
     {
         var booksList = await _bookRepository.ListBooksAsync();
         if (booksList.Count == 0)
-            return null;
+            return [];
 
         var books = _mapper.Map<List<ReadBookDto>>(booksList);
         return books;
