@@ -48,16 +48,21 @@ public class BookRepository : IBookRepository
     // Update book partially using DTO
     public async Task<Book?> UpdateBookAsync(int id, Book book)
     {
-        _logger.LogInformation("Updating book with ID {id}", id);
         var existingBook = await GetBookEntityByIdAsync(id);
-
         if (existingBook is null)
         {
             _logger.LogError("Error to update book with ID {id}", id);
             return null;
         }
-
-        _context.Entry(existingBook).CurrentValues.SetValues(book);
+        
+        _logger.LogInformation("Updating book with ID {id}", id);
+        
+        existingBook.Title = book.Title;
+        existingBook.Author = book.Author;
+        existingBook.PublicationYear = book.PublicationYear;
+        existingBook.AvailableForLoan = book.AvailableForLoan;
+        existingBook.UpdatedAt = DateTime.UtcNow.AddHours(-3);
+        
         await _context.SaveChangesAsync();
         return existingBook;
     }
