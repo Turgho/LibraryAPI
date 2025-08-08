@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - LibraryAPI</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"/>
+</head>
+
+<body class="bg-paper text-text font-body flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-64 bg-primary text-white flex flex-col p-6 shadow-lg">
+    <h1 class="text-2xl font-bold mb-8">📚 Library ERP</h1>
+
+    <nav class="flex flex-col gap-4">
+        <a href="/" class="hover:bg-accent px-4 py-2 rounded transition">Início</a>
+        <a href="/Books/Create" class="hover:bg-accent px-4 py-2 rounded transition">Novo Livro</a>
+        <a href="/Books" class="hover:bg-accent px-4 py-2 rounded transition">Lista de Livros</a>
+    </nav>
+</aside>
+
+<!-- Main Content -->
+<div class="flex-1 flex flex-col">
+    <!-- Header -->
+    <header class="bg-secondary text-text shadow p-4">
+        <h2 class="text-xl font-semibold">@ViewData["Title"]</h2>
+    </header>
+
+    <!-- Body -->
+    <main role="main" class="flex-1 p-6">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white text-center py-2">
+        © 2025 - LibraryAPI
+    </footer>
+</div>
+
+@await RenderSectionAsync("Scripts", required: false)
+<script integrity="sha256-/xUj+3OJ9zjC0aQzZ5DgKiUX5c6gL6bsE11kAtGChWc=" crossorigin="anonymous"></script>
+<script integrity="sha384-5Y6D3Bzyey0X4UNkMHFbVQ3hE/7GbNW3cb0cP5DpRYD3uRwNv0e0Zz5XvNykvvXg" crossorigin="anonymous"></script>
+<script integrity="sha384-BO9jDxDWV7ZdJKMl2+UaxZ05fX7XqDQdf5JrhC7V+5piCdtkGe06n68nR5P38eZ0" crossorigin="anonymous"></script>
+</body>
+</html>
