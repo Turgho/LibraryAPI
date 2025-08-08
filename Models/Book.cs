@@ -35,10 +35,10 @@ public class Book
     [Display(Name = "Created Date")]
     [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
     [Description("The created date of the book")]
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow.AddHours(-3);
 
     [Display(Name = "Updated Date")]
     [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
     [Description("The last updated date of the book")]
-    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow.AddHours(-3);
 }
