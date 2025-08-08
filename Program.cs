@@ -52,6 +52,13 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "LibraryAPI", Version = "v1" });
 });
 
+// Add build for razor pages
+builder.Services.AddRazorPages();
+builder.Services.AddHttpClient("ApiClient", client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5292/");
+});
+
 var app = builder.Build();
 
 // Middleware that runs only in development environment to enable Swagger UI
@@ -64,8 +71,17 @@ if (app.Environment.IsDevelopment())
 // Ensures all requests are redirected to HTTPS (secure connection)
 app.UseHttpsRedirection();
 
+// Enables serving static files from the wwwroot folder (e.g., CSS, JS, images)
+app.UseStaticFiles();
+
+// Add Razor pages routing
+app.UseRouting();
+
 // Middleware that checks if the user is authorized to access resources
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapRazorPages();
 
 // Maps routes to API controllers
 app.MapControllers();
