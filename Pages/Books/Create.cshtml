@@ -1,0 +1,44 @@
+@page
+@model BibliotecaAPI.Pages.Books.Create
+@{
+    Layout = "Shared/_Layout";
+    ViewData["Title"] = "Adicionar um novo livro";
+}
+
+<div>
+    <h1 class="text-2xl font-bold mb-6 text-gray-800">Cadastrar Novo Livro</h1>
+
+    <form method="post" class="space-y-6 bg-white p-6 rounded-lg shadow-md max-w-xl">
+        @Html.AntiForgeryToken()
+        <div>
+            <label asp-for="BookDto.Title" class="block text-sm font-medium text-gray-700">Título</label>
+            <input asp-for="BookDto.Title" value="@Model.BookDto.Title" class="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"/>
+            <span asp-validation-for="BookDto.Title" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="BookDto.Author" class="block text-sm font-medium text-gray-700">Autor</label>
+            <input asp-for="BookDto.Author" value="@Model.BookDto.Author" class="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"/>
+            <span asp-validation-for="BookDto.Author" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="BookDto.PublicationYear" class="block text-sm font-medium text-gray-700">Ano</label>
+            <input asp-for="BookDto.PublicationYear" value="@Model.BookDto.PublicationYear" type="number" class="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"/>
+            <span asp-validation-for="BookDto.PublicationYear" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div>
+            <label asp-for="BookDto.AvailableForLoan" class="block text-sm font-medium text-gray-700">Disponível para emprestar?</label>
+            <input asp-for="BookDto.AvailableForLoan" value="@Model.BookDto.AvailableForLoan" type="checkbox" class="rounded-md border-gray-700 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"/>
+            <span asp-validation-for="BookDto.AvailableForLoan" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div class="flex justify-end">
+            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-md shadow-sm">
+                Criar Livro
+            </button>
+        </div>
+    </form>
+    <validation-summary asp-validation-summary="All" class="text-red-500 text-sm mb-4" />
+</div>

@@ -1,7 +1,6 @@
 using AutoMapper;
 using BibliotecaAPI.DTOs;
 using BibliotecaAPI.Models;
-using BibliotecaAPI.Repositories;
 using BibliotecaAPI.Repositories.Interfaces;
 using BibliotecaAPI.Services.Interfaces;
 
@@ -49,6 +48,7 @@ public class BookServices : IBookServices
     public async Task<ReadBookDto?> UpdateBookAsync(int id, UpdateBookDto dto)
     {
         var book = _mapper.Map<Book>(dto);
+        
         var updatedBook = await _bookRepository.UpdateBookAsync(id, book);
         
         return updatedBook == null ? null : _mapper.Map<ReadBookDto>(updatedBook);
