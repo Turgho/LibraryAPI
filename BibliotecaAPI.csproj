@@ -45,4 +45,12 @@
     <_ContentIncludedByDefault Remove="BibliotecaAPI.Tests\obj\project.assets.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Pages\Index.cshtml" />
+  </ItemGroup>
+
 </Project>
