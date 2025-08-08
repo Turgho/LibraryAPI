@@ -31,15 +31,21 @@ public class BookController : Controller
     }
 
     [HttpPost]
-    public async Task<ActionResult<ReadBookDto>> CreateBook(CreateBookDto dto)
+    public async Task<ActionResult<ReadBookDto>> CreateBook([FromBody] CreateBookDto dto)
     {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+        
         var createdBook = await _bookServices.CreateBookAsync(dto);
         return Ok(createdBook);
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<ReadBookDto>> UpdateBook(int id, UpdateBookDto dto)
+    public async Task<ActionResult<ReadBookDto>> UpdateBook(int id, [FromBody] UpdateBookDto dto)
     {
+        if (id <= 0)
+            return BadRequest("ID inválido.");
+        
         var updatedBook = await _bookServices.UpdateBookAsync(id, dto);
         if (updatedBook == null)
             return NotFound();
